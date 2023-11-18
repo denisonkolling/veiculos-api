@@ -5,6 +5,6 @@ public enum TipoVeiculo {
     AUTOMOVEL,
     AMIONETA,
     ONIBUS,
-    CAMINHAO
+    CAMINHAO;
 
 }

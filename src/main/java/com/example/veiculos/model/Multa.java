@@ -26,4 +26,10 @@ public class Multa {
     @JoinColumn(name = "PLACA", referencedColumnName = "PLACA")
     private Veiculo veiculo;
 
+    public Multa(Veiculo veiculo, String motivo, String local, Float valor) {
+        this.veiculo = veiculo;
+        this.motivo = motivo;
+        this.local = local;
+        this.valor = valor;
+    }
 }
