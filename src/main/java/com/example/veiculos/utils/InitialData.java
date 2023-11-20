@@ -1,9 +1,6 @@
 package com.example.veiculos.utils;
 
-import com.example.veiculos.model.Multa;
-import com.example.veiculos.model.TipoVeiculo;
-import com.example.veiculos.model.Usuario;
-import com.example.veiculos.model.Veiculo;
+import com.example.veiculos.model.*;
 import com.example.veiculos.repository.MultaRepository;
 import com.example.veiculos.repository.UsuarioRepository;
 import com.example.veiculos.repository.VeiculoRepository;
@@ -36,11 +33,13 @@ public class InitialData {
         usuario1.setNome("Scooby Doo");
         usuario1.setEmail("scoobydoo@scoobydoo.com");
         usuario1.setSenha("123456");
+        usuario1.setRole(Role.ADMIN);
 
         Usuario usuario2 = new Usuario();
         usuario2.setNome("Salsicha Rogers");
         usuario2.setEmail("salsicharogers@scoobydoo.com");
         usuario2.setSenha("123456");
+        usuario2.setRole(Role.USUARIO);
 
         listaUsuarios.add(usuario1);
         listaUsuarios.add(usuario2);
@@ -59,7 +58,7 @@ public class InitialData {
 
     }
 
-    @PostConstruct
+//    @PostConstruct
     public void  crirMultas() {
 
         List<Multa> listaMultas = new ArrayList<>();
