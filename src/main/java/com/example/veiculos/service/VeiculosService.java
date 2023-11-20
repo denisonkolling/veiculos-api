@@ -3,7 +3,7 @@ package com.example.veiculos.service;
 import com.example.veiculos.model.Multa;
 import com.example.veiculos.model.Veiculo;
 import com.example.veiculos.repository.MultaRepository;
-import com.example.veiculos.repository.VeiculosRepository;
+import com.example.veiculos.repository.VeiculoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,7 +13,7 @@ import java.util.List;
 public class VeiculosService {
 
     @Autowired
-    private VeiculosRepository veiculosRepository;
+    private VeiculoRepository veiculosRepository;
 
     @Autowired
     private MultaRepository multaRepository;
