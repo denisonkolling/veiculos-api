@@ -15,11 +15,15 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true, jsr250Enabled = true)
 public class SecurityConfiguration {
+
+    @Autowired
+    private JwtAuthenticationFilter jwtAutenticadorFilter;
 
     @Autowired
     private UserDetailsService usuarioService;
@@ -35,11 +39,11 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests(auth -> auth
                                 .requestMatchers(HttpMethod.GET, "/usuarios").permitAll()
                                 .requestMatchers(HttpMethod.POST, "/veiculos/dados").permitAll()
-                                .requestMatchers(HttpMethod.POST, "/usuarios/autenticar").permitAll()
+                                .requestMatchers(HttpMethod.POST, "/login").permitAll()
                                 .anyRequest().authenticated()
                 )
-                .authenticationProvider(authenticationProvider());
-
+                .authenticationProvider(authenticationProvider())
+                .addFilterBefore(jwtAutenticadorFilter, UsernamePasswordAuthenticationFilter.class);
         return http.build();
     }
 

@@ -21,8 +21,8 @@ public class AuthenticationService {
         try {
             var authToken = new UsernamePasswordAuthenticationToken(email, password);
             Authentication authenticate = authenticationManager.authenticate(authToken);
-            var user  = (Usuario) authenticate.getPrincipal();
-            String token = tokenService.criarToken(user);
+            var usuario  = (Usuario) authenticate.getPrincipal();
+            String token = tokenService.criarToken(usuario);
             return token;
         } catch (AuthenticationException e) {
             throw new IllegalArgumentException("Usuário ou Senha Inválidos");

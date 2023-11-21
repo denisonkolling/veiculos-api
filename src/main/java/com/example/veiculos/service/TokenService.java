@@ -16,7 +16,7 @@ import java.time.ZoneId;
 @Service
 public class TokenService {
 
-    @Value("${secret.key}")
+    @Value("${secret}")
     private String secret;
 
     public String obterToken(String bearerToken) {
@@ -36,7 +36,7 @@ public class TokenService {
 
     public String criarToken(Usuario user) {
         Algorithm algorithm = Algorithm.HMAC256(secret.getBytes());
-        Instant expiration = gerarExpiracao(10);
+        Instant expiration = gerarExpiracao(30);
         String token = JWT.create()
                 .withSubject(user.getEmail())
                 .withExpiresAt(expiration)
