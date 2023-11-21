@@ -4,6 +4,7 @@ import com.example.veiculos.dto.UsuarioRequest;
 import com.example.veiculos.dto.UsuarioResponse;
 import com.example.veiculos.model.Usuario;
 import com.example.veiculos.service.UsuarioService;
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
@@ -33,6 +34,7 @@ public class UsuarioController {
     }
 
     @PostMapping
+    @RolesAllowed("ADMIN")
     public ResponseEntity<UsuarioResponse> criarUsuario(@RequestBody @Valid UsuarioRequest request) {
         var usuario = mapper.map(request, Usuario.class);
         usuario = usuarioService.criarUsuario(usuario);
